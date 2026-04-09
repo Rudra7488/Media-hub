@@ -19,8 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
-const inVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
-const downloadsDir = inVercel ? path.join('/tmp', 'downloads') : path.join(__dirname, 'public/downloads');
+const downloadsDir = path.join(__dirname, 'public/downloads');
 fs.ensureDirSync(downloadsDir);
 app.use('/downloads', express.static(downloadsDir));
 
@@ -29,8 +28,7 @@ app.use('/downloads', express.static(downloadsDir));
  * This runs every 5 minutes.
  * It deletes files in 'public/downloads' that are older than 2 minutes.
  */
-if (!inVercel) {
-  cron.schedule('*/5 * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
     console.log('[Cron] Running Rapid Auto-Cleaner (5m interval)...');
     fs.readdir(downloadsDir, (err, files) => {
         if (err) return console.error('[Cron] Error reading downloads dir:', err);
@@ -54,8 +52,7 @@ if (!inVercel) {
             });
         });
     });
-  });
-}
+});
 
 // Middleware
 const corsOptions = {
@@ -81,12 +78,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-} else {
-  console.log("🚀 MediaDash Backend is successfully initialized and running on Vercel!");
-}
+app.listen(PORT, () => {
+  console.log(`🚀 MediaDash Backend is successfully running on port ${PORT}!`);
+});
 
 export default app;

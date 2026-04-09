@@ -20,9 +20,8 @@ ffmpeg.setFfprobePath(ffprobeInstaller.path);
 class ReelService {
     constructor() {
         this.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36';
-        const inVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
-        this.tempDir = inVercel ? path.join('/tmp', 'temp') : path.join(__dirname, '../../temp');
-        this.downloadsDir = inVercel ? path.join('/tmp', 'downloads') : path.join(__dirname, '../../public/downloads');
+        this.tempDir = path.join(__dirname, '../../temp');
+        this.downloadsDir = path.join(__dirname, '../../public/downloads');
 
         // Ensure directories exist
         fs.ensureDirSync(this.tempDir);

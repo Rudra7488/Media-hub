@@ -13,8 +13,7 @@ const __dirname = dirname(__filename);
 
 class YoutubeService {
   constructor() {
-    const inVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
-    this.downloadsDir = inVercel ? path.join('/tmp', 'downloads') : path.join(__dirname, '../../public/downloads');
+    this.downloadsDir = path.join(__dirname, '../../public/downloads');
     fs.ensureDirSync(this.downloadsDir);
   }
 
