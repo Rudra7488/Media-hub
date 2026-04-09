@@ -49,7 +49,11 @@ cron.schedule('*/5 * * * *', () => {
 });
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: ['https://media-hub-three.vercel.app', 'http://localhost:3000'],
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Video, Loader2, PlayCircle, ExternalLink, Sparkles, Monitor, AlertCircle } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:5000/api/youtube';
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/youtube`;
 
 const YoutubeDownloader = () => {
   const [url, setUrl] = useState('');
@@ -44,7 +44,7 @@ const YoutubeDownloader = () => {
         quality: 'best', 
         title: metadata?.title || 'media'
       });
-      const downloadUrl = `http://localhost:5000${response.data.downloadUrl}`;
+      const downloadUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${response.data.downloadUrl}`;
       
       const link = document.createElement('a');
       link.href = downloadUrl;
