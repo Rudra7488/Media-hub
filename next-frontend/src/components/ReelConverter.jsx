@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Download, Music, Smartphone, Zap, Loader2, Video, Sparkles, AlertCircle } from 'lucide-react';
 
-const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/reel/download`;
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL || 'https://media-hub-odup.onrender.com'}/api/reel/download`;
 
 const ReelConverter = () => {
   const [url, setUrl] = useState('');
@@ -32,7 +32,7 @@ const ReelConverter = () => {
 
   const downloadFile = (path, name) => {
     const link = document.createElement('a');
-    link.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${path}`;
+    link.href = `${process.env.NEXT_PUBLIC_API_URL || 'https://media-hub-odup.onrender.com'}${path}`;
     link.setAttribute('download', name);
     document.body.appendChild(link);
     link.click();
