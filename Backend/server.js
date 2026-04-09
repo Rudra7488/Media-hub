@@ -29,7 +29,8 @@ app.use('/downloads', express.static(downloadsDir));
  * This runs every 5 minutes.
  * It deletes files in 'public/downloads' that are older than 2 minutes.
  */
-cron.schedule('*/5 * * * *', () => {
+if (!inVercel) {
+  cron.schedule('*/5 * * * *', () => {
     console.log('[Cron] Running Rapid Auto-Cleaner (5m interval)...');
     fs.readdir(downloadsDir, (err, files) => {
         if (err) return console.error('[Cron] Error reading downloads dir:', err);
@@ -53,7 +54,8 @@ cron.schedule('*/5 * * * *', () => {
             });
         });
     });
-});
+  });
+}
 
 // Middleware
 const corsOptions = {
@@ -83,6 +85,8 @@ if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
+} else {
+  console.log("🚀 MediaDash Backend is successfully initialized and running on Vercel!");
 }
 
 export default app;
