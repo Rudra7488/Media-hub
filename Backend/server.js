@@ -82,4 +82,4 @@ app.listen(PORT, () => {
   console.log(`🚀 MediaDash Backend is successfully running on port ${PORT}!`);
 });
 
-export default app;
+
