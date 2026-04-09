@@ -19,7 +19,8 @@ const PORT = process.env.PORT || 5000;
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
-const downloadsDir = path.join(__dirname, 'public/downloads');
+const inVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
+const downloadsDir = inVercel ? path.join('/tmp', 'downloads') : path.join(__dirname, 'public/downloads');
 fs.ensureDirSync(downloadsDir);
 app.use('/downloads', express.static(downloadsDir));
 
