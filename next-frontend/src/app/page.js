@@ -1,6 +1,3 @@
-"use client";
-import ComingSoon from '@/components/ComingSoon.jsx';
-
-export default function ProfilePage() {
-  return <ComingSoon title="Profile Area" feature="Deep Profile Analytics" />;
+export default function Home() {
+  return <h1>FINAL TEST 🚀</h1>;
 }
