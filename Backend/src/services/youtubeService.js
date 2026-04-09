@@ -1,10 +1,15 @@
-const youtubedl = require('youtube-dl-exec');
-const path = require('path');
-const fs = require('fs-extra');
-const crypto = require('crypto');
+import youtubedl from 'youtube-dl-exec';
+import path from 'path';
+import fs from 'fs-extra';
+import crypto from 'crypto';
 const uuidv4 = () => crypto.randomUUID();
-const axios = require('axios');
-const ffmpegPath = require('ffmpeg-static');
+import axios from 'axios';
+import ffmpegPath from 'ffmpeg-static';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 class YoutubeService {
   constructor() {
@@ -85,4 +90,4 @@ class YoutubeService {
   }
 }
 
-module.exports = new YoutubeService();
+export default new YoutubeService();

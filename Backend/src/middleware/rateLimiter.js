@@ -1,4 +1,4 @@
-const rateLimit = require('express-rate-limit');
+import rateLimit from 'express-rate-limit';
 
 const instagramRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -10,4 +10,4 @@ const instagramRateLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-module.exports = instagramRateLimiter;
+export default instagramRateLimiter;

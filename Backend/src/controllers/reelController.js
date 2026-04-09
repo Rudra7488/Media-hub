@@ -1,6 +1,6 @@
-const reelService = require('../services/reelService');
+import reelService from '../services/reelService.js';
 
-exports.downloadReel = async (req, res) => {
+export const downloadReel = async (req, res) => {
   const { url } = req.body;
   let tempPath = null;
 

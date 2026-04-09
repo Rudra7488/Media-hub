@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const reelController = require('../controllers/reelController');
+import * as reelController from '../controllers/reelController.js';
 
 router.post('/download', reelController.downloadReel);
 
-module.exports = router;
+export default router;

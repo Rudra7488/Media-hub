@@ -1,7 +1,7 @@
-const instagramService = require('../services/instagramService');
-const SearchHistory = require('../models/SearchHistory');
+import instagramService from '../services/instagramService.js';
+import SearchHistory from '../models/SearchHistory.js';
 
-exports.getProfileData = async (req, res) => {
+export const getProfileData = async (req, res) => {
   const { username } = req.params;
 
   if (!username) {

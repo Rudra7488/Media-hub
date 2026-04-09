@@ -1,6 +1,6 @@
-const youtubeService = require('../services/youtubeService');
+import youtubeService from '../services/youtubeService.js';
 
-exports.getMetadata = async (req, res) => {
+export const getMetadata = async (req, res) => {
     const { url } = req.body;
     if (!url || (!url.includes('youtube.com') && !url.includes('youtu.be'))) {
         return res.status(400).json({ message: 'Valid YouTube URL is required' });
@@ -14,7 +14,7 @@ exports.getMetadata = async (req, res) => {
     }
 };
 
-exports.downloadMedia = async (req, res) => {
+export const downloadMedia = async (req, res) => {
     const { url, format, quality, title } = req.body; 
     if (!url) {
         return res.status(400).json({ message: 'URL is required' });

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const searchHistorySchema = new mongoose.Schema({
   username: {
@@ -16,4 +16,4 @@ const searchHistorySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('SearchHistory', searchHistorySchema);
+export default mongoose.model('SearchHistory', searchHistorySchema);

@@ -1,11 +1,16 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const ffmpeg = require('fluent-ffmpeg');
-const ffmpegInstaller = require('ffmpeg-static');
-const ffprobeInstaller = require('ffprobe-static');
-const path = require('path');
-const fs = require('fs-extra');
-const crypto = require('crypto');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import ffmpeg from 'fluent-ffmpeg';
+import ffmpegInstaller from 'ffmpeg-static';
+import ffprobeInstaller from 'ffprobe-static';
+import path from 'path';
+import fs from 'fs-extra';
+import crypto from 'crypto';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const uuidv4 = () => crypto.randomUUID();
 
 // Configure ffmpeg to use static binaries
@@ -136,4 +141,4 @@ class ReelService {
     }
 }
 
-module.exports = new ReelService();
+export default new ReelService();

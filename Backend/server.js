@@ -1,12 +1,18 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const fs = require('fs-extra');
-const cron = require('node-cron');
-const instagramRoutes = require('./src/routes/instagramRoutes');
-const reelRoutes = require('./src/routes/reelRoutes');
-const youtubeRoutes = require('./src/routes/youtubeRoutes');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import fs from 'fs-extra';
+import cron from 'node-cron';
+import instagramRoutes from './src/routes/instagramRoutes.js';
+import reelRoutes from './src/routes/reelRoutes.js';
+import youtubeRoutes from './src/routes/youtubeRoutes.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;

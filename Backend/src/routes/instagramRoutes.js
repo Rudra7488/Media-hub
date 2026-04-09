@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const instagramController = require('../controllers/instagramController');
-const instagramRateLimiter = require('../middleware/rateLimiter');
+import * as instagramController from '../controllers/instagramController.js';
+import instagramRateLimiter from '../middleware/rateLimiter.js';
 
 // GET /api/instagram/:username
 router.get('/:username', instagramRateLimiter, instagramController.getProfileData);
 
-module.exports = router;
+export default router;

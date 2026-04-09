@@ -1,6 +1,6 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const puppeteerService = require('./puppeteerService');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import puppeteerService from './puppeteerService.js';
 
 class InstagramService {
   constructor() {
@@ -168,4 +168,4 @@ class InstagramService {
   }
 }
 
-module.exports = new InstagramService();
+export default new InstagramService();
