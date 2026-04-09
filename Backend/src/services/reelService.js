@@ -5,7 +5,8 @@ const ffmpegInstaller = require('ffmpeg-static');
 const ffprobeInstaller = require('ffprobe-static');
 const path = require('path');
 const fs = require('fs-extra');
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
+const uuidv4 = () => crypto.randomUUID();
 
 // Configure ffmpeg to use static binaries
 ffmpeg.setFfmpegPath(ffmpegInstaller);

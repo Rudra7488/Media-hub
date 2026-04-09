@@ -1,7 +1,8 @@
 const youtubedl = require('youtube-dl-exec');
 const path = require('path');
 const fs = require('fs-extra');
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
+const uuidv4 = () => crypto.randomUUID();
 const axios = require('axios');
 const ffmpegPath = require('ffmpeg-static');
 
