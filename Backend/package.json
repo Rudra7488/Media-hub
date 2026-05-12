@@ -38,5 +38,8 @@
     "youtube-ext": "^1.1.25",
     "yt-dlp-exec": "^1.0.2"
   },
+  "engines": {
+    "node": "20"
+  },
   "type": "module"
 }
