@@ -10,9 +10,11 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+# Accept build argument for API URL
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Build the Next.js application
-# Note: We pass the API URL as a build argument if needed, 
-# but here we'll use runtime env or defaults.
 RUN npm run build
 
 # Stage 2: Serve the application
